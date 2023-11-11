@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/presentation/search/widget/search_idle.dart';
+import 'package:netflix/presentation/search/widget/search_result.dart';
 
 class ScreenSearch extends StatelessWidget {
   const ScreenSearch({super.key});
@@ -23,14 +24,8 @@ class ScreenSearch extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
           ),
-          Text(
-            'Recommended TV Shows & Movies',
-            style: TextStyle(
-              fontSize: 19,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SearchIdleWidget()
+          
+          Expanded(child: SearchResultWidget())
         ],
       ),
     ));
