@@ -11,8 +11,8 @@ class MainBigCardWidget extends StatelessWidget {
       
         Container(
         margin: const EdgeInsets.symmetric(horizontal: 5),
-        width: 160,
-        height: 300,
+        width: 170,
+        height: 260,
         // color: Colors.amber,
         decoration:  BoxDecoration(
           borderRadius: kRadius10,

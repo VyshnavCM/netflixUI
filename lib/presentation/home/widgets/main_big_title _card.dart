@@ -20,7 +20,7 @@ class MainTitleBigCard extends StatelessWidget {
         MainTitle(title: title),
         KHeight10,
         LimitedBox(
-          maxHeight: 300,
+          maxHeight: 270,
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: List.generate(
