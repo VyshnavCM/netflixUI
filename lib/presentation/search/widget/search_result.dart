@@ -22,7 +22,7 @@ class SearchResultWidget extends StatelessWidget {
           crossAxisSpacing: 5,
           childAspectRatio: 1 /1.4, // height and width control
           shrinkWrap: true,
-          children: List.generate(20, (index) {
+          children: List.generate(21, (index) {
             return const MainCard();
           }),
         ))

@@ -13,20 +13,23 @@ class SearchIdleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-           SearchTextTitle(title:'Recommended TV Shows & Movies',),
-          // KHeight
-          Expanded(
-            child: ListView.separated(
-              shrinkWrap: true,
-              itemBuilder: (context, index) => const TopSearchItemTile(),
-              separatorBuilder: (context, index) => KHeight10,
-              itemCount: 10,
-            ),
-          )
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+             SearchTextTitle(title:'Recommended TV Shows & Movies',),
+            // KHeight
+            Expanded(
+              child: ListView.separated(
+                shrinkWrap: true,
+                itemBuilder: (context, index) => const TopSearchItemTile(),
+                separatorBuilder: (context, index) => KHeight10,
+                itemCount: 10,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
