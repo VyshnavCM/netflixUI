@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'widgets/app_bar.dart';
 import 'widgets/coming_soon_widget.dart';
+import 'widgets/everyones_watching_widget.dart';
 
 class ScreenNewAndHot extends StatelessWidget {
   const ScreenNewAndHot({super.key});
@@ -23,13 +24,23 @@ class ScreenNewAndHot extends StatelessWidget {
   }
 
   Widget _buildCommingSoon() {
-    return ListView.builder(itemBuilder:(context, index) {
-      return const CommingSoonWidget();
-    },itemCount: 10,);
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        return const CommingSoonWidget();
+      },
+      itemCount: 10,
+    );
   }
 
   Widget _buildEveryonesWatching() {
-    return const SizedBox();
+    return  Padding(
+      padding:const EdgeInsets.all(8.0),
+      child:ListView.builder
+      
+      (
+        itemCount: 10,
+        itemBuilder:(context, index) =>const EveryonesWatchingWidget(),),
+    );
   }
 }
 

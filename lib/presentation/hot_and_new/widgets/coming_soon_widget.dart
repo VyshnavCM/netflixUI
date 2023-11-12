@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/presentation/hot_and_new/widgets/custom_icon_widget.dart';
+import 'package:netflix/presentation/widgets/video_widget.dart';
 
 import '../../../core/colors/colors.dart';
 import '../../../core/constatnts.dart';
@@ -32,7 +33,8 @@ class CommingSoonWidget extends StatelessWidget {
                     ),
                     Text(
                       "07",
-                      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
                     ),
                   ]),
             ),
@@ -40,48 +42,40 @@ class CommingSoonWidget extends StatelessWidget {
           SizedBox(
             width: size.width - 80,
             height: 350,
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Stack(
-                  children: [
-                    SizedBox(
-                      width: double.infinity,
-                      height: 190,
-                      child: Image.network(
-                        newAndHotTempImage,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    const Positioned(
-                        bottom: 20,
-                        right: 20,
-                        child: Icon(Icons.volume_off_outlined))
-                  ],
-                ),
-                const Padding(
+                VideoWidget(image: newAndHotTempImage,),
+                Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         'KILLER',
-                        style:
-                            TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 35, fontWeight: FontWeight.bold),
                       ),
                       Spacer(),
                       Row(
                         children: [
-                          CustomIconWidget(icon: Icons.notifications_none_outlined, title: 'Remind me',),
+                          CustomIconWidget(
+                            icon: Icons.notifications_none_outlined,
+                            title: 'Remind me',
+                            iconSize: 18,
+                          ),
                           KWidth20,
-                          CustomIconWidget(icon: Icons.info_outline, title: 'info',),
-                          
+                          CustomIconWidget(
+                            icon: Icons.info_outline,
+                            title: 'info',
+                            iconSize: 18,
+                          ),
                         ],
                       )
                     ],
                   ),
                 ),
-                const Text(
+                Text(
                   'Seasons comming on 7 December',
                   style: TextStyle(
                     fontSize: 15,
@@ -89,7 +83,7 @@ class CommingSoonWidget extends StatelessWidget {
                   ),
                 ),
                 KHeight10,
-                const Text(
+                Text(
                   'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.  normal distribution of letters,',
                   style: TextStyle(fontSize: 12, color: kGreyColor),
                 )
@@ -101,4 +95,3 @@ class CommingSoonWidget extends StatelessWidget {
     );
   }
 }
-
