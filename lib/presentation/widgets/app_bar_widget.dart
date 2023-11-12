@@ -5,10 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix/core/constatnts.dart';
 import 'package:netflix/presentation/search/screen_search.dart';
 
-class AppBarWidget
- extends StatelessWidget {
-  const AppBarWidget
-  ({super.key, required this.title});
+class AppBarWidget extends StatelessWidget {
+  const AppBarWidget({super.key, required this.title});
   final String title;
 
   @override
@@ -16,14 +14,22 @@ class AppBarWidget
     return Row(
       children: [
         KWidth,
-         Expanded(child: Text(title,style: GoogleFonts.montserrat(textStyle: const TextStyle(
-                fontSize: 23,
-                fontWeight: FontWeight.w600,
-              ),),)),
-        IconButton(onPressed: (){
-           
-
-        }, icon: const Icon(Icons.cast,size: 30,)),
+        Expanded(
+            child: Text(
+          title,
+          style: GoogleFonts.montserrat(
+            textStyle: const TextStyle(
+              fontSize: 23,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        )),
+        IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.cast,
+              size: 30,
+            )),
         KWidth,
         Container(
           color: Colors.blue,
