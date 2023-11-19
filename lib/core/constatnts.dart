@@ -13,8 +13,12 @@ const KHeight10 = SizedBox(height: 10,);
 final BorderRadius kRadius10 = BorderRadius.circular(10);
 final BorderRadius kRadius30 = BorderRadius.circular(30);
 
-//image
+//Image
 
 const kMainImage = 'https://www.themoviedb.org/t/p/w220_and_h330_face/voHUmluYmKyleFkTu3lOXQG702u.jpg';
 const newAndHotTempImage = 'https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/mRmRE4RknbL7qKALWQDz64hWKPa.jpg';
 const everonesWatchingTempImage = 'https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/aWnEtYJn31swY2pC8cOtje98bYc.jpg';
+
+//Api key
+
+const apiKey = "b7ba2eac8a51dd1e021e235beaf537f9";

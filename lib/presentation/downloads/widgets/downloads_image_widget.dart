@@ -20,16 +20,14 @@ class DownloadsImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final size = MediaQuery.of(context).size;
     return Transform.rotate(
       angle: angle * pi / 180,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(radius),
+        borderRadius: BorderRadius.circular(12),
         child: Container(
           margin: margin,
           width: size.width,
           height: size.width,
-          // color: Colors.black,
           decoration: BoxDecoration(
             // borderRadius: BorderRadius.circular(radius),
             image: DecorationImage(

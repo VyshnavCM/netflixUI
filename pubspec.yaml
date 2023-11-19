@@ -1,14 +1,12 @@
 name: netflix
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
+publish_to: 'none' 
 
 version: 1.0.0+1
 
 environment:
   sdk: '>=3.1.5 <4.0.0'
-
 
 dependencies:
   bloc: ^8.1.2
@@ -32,7 +30,6 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.4.5
   injectable_generator: ^2.4.1
-
 
 flutter:
   uses-material-design: true
