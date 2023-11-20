@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/core/constatnts.dart';
+import 'package:netflix/models/movies.dart';
 import 'package:netflix/presentation/search/widget/title.dart';
+
+import '../../../controller/api/api.dart';
 // import 'package:netflix/core/constatnts.dart';
 
 const imageUrl =
@@ -19,14 +22,30 @@ class SearchIdleWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
              SearchTextTitle(title:'Recommended TV Shows & Movies',),
-            // KHeight
+            KHeight10,
             Expanded(
-              child: ListView.separated(
-                shrinkWrap: true,
-                itemBuilder: (context, index) => const TopSearchItemTile(),
-                separatorBuilder: (context, index) => KHeight10,
-                itemCount: 10,
-              ),
+              child: FutureBuilder(
+            future: Api().forSearchDara(),
+            builder: (context, snapshot) {
+              if (snapshot.hasError ||
+                  snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                return ListView.separated(
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      var data = snapshot.data![index];
+                      return TopSearchItemTile(
+                        movie: data,
+                      );
+                    },
+                    separatorBuilder: (context, index) => KHeight10,
+                    itemCount: snapshot.data!.length);
+              }
+            },
+          ),
             )
           ],
         ),
@@ -38,8 +57,8 @@ class SearchIdleWidget extends StatelessWidget {
 
 
 class TopSearchItemTile extends StatelessWidget {
-  const TopSearchItemTile({super.key});
-
+  const TopSearchItemTile({super.key,required this.movie});
+   final Movie movie;
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -48,15 +67,15 @@ class TopSearchItemTile extends StatelessWidget {
         Container(
           width: screenWidth * .35,
           height: 80,
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage(imageUrl), fit: BoxFit.cover)),
+                  image: NetworkImage("$imagePath${movie.backdropPath}"), fit: BoxFit.cover)),
         ),
         KWidth,
-        const Expanded(
+         Expanded(
             child: Text(
-          'Movie Name',
-          style: TextStyle(
+          movie.title,
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
         )),

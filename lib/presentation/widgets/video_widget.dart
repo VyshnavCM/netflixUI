@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/constatnts.dart';
+
 class VideoWidget extends StatelessWidget {
   const VideoWidget({
     super.key,required this.image,
@@ -14,7 +16,7 @@ class VideoWidget extends StatelessWidget {
           width: double.infinity,
           height: 190,
           child: Image.network(
-            image,
+            "$imagePath$image",
             fit: BoxFit.cover,
           ),
         ),

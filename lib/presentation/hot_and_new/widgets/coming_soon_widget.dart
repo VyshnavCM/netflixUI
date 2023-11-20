@@ -4,12 +4,18 @@ import 'package:netflix/presentation/widgets/video_widget.dart';
 
 import '../../../core/colors/colors.dart';
 import '../../../core/constatnts.dart';
+import '../../../models/movies.dart';
+import 'package:intl/intl.dart';
 
 class CommingSoonWidget extends StatelessWidget {
-  const CommingSoonWidget({
+  CommingSoonWidget({
     super.key,
+    required this.movie,
   });
-
+  final Movie movie;
+  final DateFormat monthFormatter = DateFormat('MMM');
+  final DateFormat dayFormatter = DateFormat('dd');
+  final DateFormat dayFormatterDay = DateFormat('EEEE');
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -17,47 +23,55 @@ class CommingSoonWidget extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: Row(
         children: [
-          const SizedBox(
+          SizedBox(
             width: 70,
-            height: 350,
+            height: 450,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      "DEC",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: kGreyColor),
-                    ),
-                    Text(
-                      "07",
-                      style:
-                          TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                    ),
-                  ]),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    monthFormatter
+                        .format(DateTime.parse(movie.releaseDate))
+                        .toUpperCase(),
+                    style: const TextStyle(
+                        fontSize: 15,
+                        color: kGreyColor,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    dayFormatter.format(DateTime.parse(movie.releaseDate)),
+                    style: const TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: AutofillHints.addressCity,
+                        letterSpacing: 2),
+                  )
+                ],
+              ),
             ),
           ),
           SizedBox(
             width: size.width - 80,
-            height: 350,
-            child: const Column(
+            height: 450,
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                VideoWidget(image: newAndHotTempImage,),
+                VideoWidget(
+                  image: movie.backdropPath,
+                ),
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'KILLER',
-                        style: TextStyle(
-                            fontSize: 35, fontWeight: FontWeight.bold),
+                        movie.title,
                       ),
-                      Spacer(),
-                      Row(
+                      const Spacer(),
+                      const Row(
                         children: [
                           CustomIconWidget(
                             icon: Icons.notifications_none_outlined,
@@ -76,16 +90,12 @@ class CommingSoonWidget extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Seasons comming on 7 December',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  'Coming On ${dayFormatter.format(DateTime.parse(movie.releaseDate))} ${monthFormatter.format(DateTime.parse(movie.releaseDate))}',
                 ),
                 KHeight10,
                 Text(
-                  'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.  normal distribution of letters,',
-                  style: TextStyle(fontSize: 12, color: kGreyColor),
+                  movie.overview,
+                  style: const TextStyle(fontSize: 12, color: kGreyColor),
                 )
               ],
             ),

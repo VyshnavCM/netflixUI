@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/core/constatnts.dart';
 import 'widgets/app_bar.dart';
 import 'widgets/coming_soon_widget.dart';
 import 'widgets/everyones_watching_widget.dart';
@@ -24,24 +25,45 @@ class ScreenNewAndHot extends StatelessWidget {
   }
 
   Widget _buildCommingSoon() {
-    return ListView.builder(
-      itemBuilder: (context, index) {
-        return const CommingSoonWidget();
+    return ValueListenableBuilder(
+      valueListenable: upComingListNotifeir,
+      builder: (context, value, _) {
+        return ListView.builder(
+          itemCount: value.length,
+          itemBuilder: (context, index) {
+            var data = value[index];
+            return CommingSoonWidget(
+              movie: data,
+            );
+          },
+        );
       },
-      itemCount: 10,
     );
   }
 
-  Widget _buildEveryonesWatching() {
-    return  Padding(
-      padding:const EdgeInsets.all(8.0),
-      child:ListView.builder
-      
-      (
-        itemCount: 10,
-        itemBuilder:(context, index) =>const EveryonesWatchingWidget(),),
-    );
+
+    Widget _buildEveryonesWatching() {
+    return ValueListenableBuilder(
+        valueListenable: topRatedListNotifeir,
+        builder: (context, value, _) {
+          return ListView.builder(
+            itemCount: value.length,
+            itemBuilder: (context, index) {
+              var data = value[index];
+              return EveryonesWatchingWidget(
+                movie: data,
+              );
+            },
+          );
+        });
   }
+  // Widget _buildEveryonesWatching() {
+  //   return Padding(
+  //     padding: const EdgeInsets.all(8.0),
+  //     child: ListView.builder(
+  //       itemCount: 10,
+  //       itemBuilder: (context, index) => const EveryonesWatchingWidget(),
+  //     ),
+  //   );
+  // }
 }
-
-

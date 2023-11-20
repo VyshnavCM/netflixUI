@@ -5,7 +5,7 @@ class Movie {
   String overview;
   String posterPath;
   String releaseDate;
-  double voteAverage;
+  var voteAverage;
 
   Movie(
       {required this.title,

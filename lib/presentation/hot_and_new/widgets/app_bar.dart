@@ -39,17 +39,21 @@ class AppBarHotAndNew extends StatelessWidget {
           color: Colors.blue,
           width: 30,
           height: 30,
+          child: Image.asset('assets/Netflix-avatar.png'),
         ),
         KWidth
       ],
       bottom: TabBar(
+        indicatorWeight:1 ,
         isScrollable: true,
         indicatorPadding: EdgeInsets.zero,
         labelColor: kBlackColor,
-        labelStyle:
-            const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-        indicator:
-            BoxDecoration(color: kWhiteColor, borderRadius: kRadius30),
+        labelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+        indicator: BoxDecoration(
+          color: kWhiteColor,
+          borderRadius: kRadius30,
+        ),
+        indicatorSize: TabBarIndicatorSize.tab,
         tabs: const [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.0),

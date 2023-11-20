@@ -1,33 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constatnts.dart';
+import 'package:netflix/models/movies.dart';
 import 'package:netflix/presentation/widgets/video_widget.dart';
-
 import 'custom_icon_widget.dart';
 
 class EveryonesWatchingWidget extends StatelessWidget {
-  const EveryonesWatchingWidget({
-    super.key,
+   EveryonesWatchingWidget({
+    super.key, required this.movie,
   });
+  final Movie movie;
+  
+  final DateFormat monthFormatter = DateFormat('MMM');
+  final DateFormat dayFormatter = DateFormat('d');
+  final DateFormat dayFormatterDay = DateFormat('EEEE');
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return  Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         KHeight,
-        VideoWidget(image: everonesWatchingTempImage,),
+         VideoWidget(image: movie.backdropPath),
         Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'The Crown',
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-              ),
-              Spacer(),
-              Row(
+             Text(
+            movie.title,
+            style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                fontFamily: AutofillHints.addressCity),
+          ),
+              const Spacer(),
+              const Row(
                 children: [
                   CustomIconWidget(
                     icon: Icons.add,
@@ -48,18 +57,14 @@ class EveryonesWatchingWidget extends StatelessWidget {
             ],
           ),
         ),
+    
         KHeight10,
-        Text(
-          'Seasons comming on Saturday',
-          style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            movie.overview,
+            style: const TextStyle(fontSize: 12, color: kGreyColor),
           ),
-        ),
-        KHeight10,
-        Text(
-          'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.  normal distribution of letters,',
-          style: TextStyle(fontSize: 12, color: kGreyColor),
         )
       ],
     );

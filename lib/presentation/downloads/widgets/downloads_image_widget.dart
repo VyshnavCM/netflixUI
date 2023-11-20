@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../../../core/constatnts.dart';
+
 class DownloadsImageWidget extends StatelessWidget {
   const DownloadsImageWidget({
     super.key,
@@ -31,7 +33,7 @@ class DownloadsImageWidget extends StatelessWidget {
           decoration: BoxDecoration(
             // borderRadius: BorderRadius.circular(radius),
             image: DecorationImage(
-                image: NetworkImage(imageList), fit: BoxFit.contain),
+                image: NetworkImage("$imagePath$imageList"), fit: BoxFit.contain),
           ),
         ),
       ),
